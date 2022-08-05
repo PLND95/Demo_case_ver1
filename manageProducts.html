@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ứng Dụng Quản Lý Sản Phẩm</title>
+</head>
+<style>
+    table tr td {
+        border: blue 1px solid;
+    }
+    Img{ width : 100px}
+
+
+    Main { display: flex; justify-content: center}
+
+</style>
+<main>
+    <div>
+        <h1>Danh sách sản phẩm</h1>
+        <input type="text" id="newP" placeholder="Tên sản phẩm">
+        <input type="number" id="amountP" placeholder="Nhập số lượng">
+        <button onclick="createNewProducts()">Create</button>
+        <button onclick="searchProducts()">Search</button>
+        <table>
+            <tr>
+                <td>Tên sản phẩm</td>
+                <td>Hình ảnh</td>
+                <td>Số lượng</td>
+                <td></td>
+            </tr>
+            <tbody id="products">
+    
+            </tbody>
+        </table>
+    </div>
+
+
+</main>
+</html>
+<script src="manageProducts.js"></script>
