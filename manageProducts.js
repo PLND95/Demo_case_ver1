@@ -22,23 +22,43 @@ function showAllProducts() {
 }showAllProducts();
 
 // Hàm để tạo sản phẩm
+// Có điều kiện để tạo trùng sản phẩm thì alert ra hộp thoại
 function createNewProducts() {
     let newP = document.getElementById("newP").value;
     let amountP = document.getElementById("amountP").value;
-    amount.push(amountP);
-    productsList.push(newP);
-    showAllProducts();
-    document.getElementById("newP").value = "";
-    document.getElementById("amountP").value = "";
+    let newImages = document.getElementById("newImages").value;
+    let flag = false;
+    for (let i =0; i < productsList.length; i++) {
+        if (newP == productsList[i]) {
+            flag = true;
+        }
+    }
+    if (flag == false) {
+        amount.push(amountP);
+        productsList.push(newP);
+        images.push(newImages);
+        showAllProducts();
+        document.getElementById("newP").value = "";
+        document.getElementById("amountP").value = "";
+    }else {
+        alert("Sản phẩm đã có trong dach sách");
+        document.getElementById("newP").value = "";
+        document.getElementById("amountP").value = "";
+    }
+
 }
 
 // Hàm để xóa sản phẩm 
 // có tham số để truyền vào vị trí cần xóa
 function delProducts(index) {
-    productsList.splice(index, 1);
-    amount.splice (index, 1);
-    images.splice (index, 1);
-    showAllProducts();
+    let check = confirm("Bạn có chắc chắn muốn xóa? ");
+    if (check == true){
+        productsList.splice(index, 1);
+        amount.splice (index, 1);
+        images.splice (index, 1);
+        showAllProducts();
+    }
+ 
 }
 
 // Hàm để edit
@@ -49,8 +69,10 @@ function delProducts(index) {
 function editProducts(index) {
     let newValue = prompt("Mời bạn nhập tên sản phẩm mới ", productsList[index]);
     let newAmount = prompt ("Mời bạn nhập số lượng ")
+    let newImages = prompt ("Nhập link ảnh")
     amount[index] = newAmount;
     productsList[index] = newValue;
+    images[index] = newImages;
     showAllProducts();
 }
 

@@ -8,19 +8,34 @@
 </head>
 <style>
     table tr td {
-        border: blue 1px solid;
+        border: 1px solid;
+        color: black;
+        background-color: rgb(218, 253, 61);
     }
-    Img{ width : 100px}
+    Img{ width : 100px; background-color:cornsilk;}
 
 
-    Main { display: flex; justify-content: center}
+    Main { display: flex; justify-content: center; background-color: rgb(136, 97, 97);}
+    
+    button { background-color: rgb(240, 40, 4);
+        color: white;
+        border: 0;
+        padding: 10px 20px;
+        border-radius: 5px;}
+
+    input {
+        padding: 10px;
+        border-radius: 5px;
+        border: 0.2px solid black;
+    }
 
 </style>
 <main>
     <div>
-        <h1>Danh sách sản phẩm</h1>
-        <input type="text" id="newP" placeholder="Tên sản phẩm">
-        <input type="number" id="amountP" placeholder="Nhập số lượng">
+        <h1>DANH SÁCH SẢN PHẨM</h1>
+        <input type="text" id="newP" placeholder="Tên sản phẩm"> <br> <br>
+        <input type="number" id="amountP" placeholder="Nhập số lượng"> 
+        <input type="text" id="newImages" placeholder="Nhập link ảnh">  <br> <br>
         <button onclick="createNewProducts()">Create</button>
         <button onclick="searchProducts()">Search</button>
         <table>
