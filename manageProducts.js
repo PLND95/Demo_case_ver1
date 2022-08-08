@@ -12,9 +12,9 @@ function showAllProducts() {
     let content = ""
     for (let i =0; i < productsList.length; i++) {
         content += "<tr>" +
-                        "<td>" + productsList[i] + "</td>" +
+                        "<td class ='nameProducts'>" + productsList[i] + "</td>" +
                         "<td><img src='" + images[i] + "'></td>" +
-                        "<td>" + amount[i] + "</td>" +
+                        "<td class ='amoutProducts'>" + amount[i] + "</td>" +
                         "<td><button onclick ='editProducts("+i+")'>Sửa</button> <button onclick = 'delProducts("+i+")'>Xóa</button></td>" +
                     "</tr>"
     }
@@ -66,14 +66,31 @@ function delProducts(index) {
 // Cho người dụng nhập vào sp mới
 // Gán lại sp cho sp cũ
 // hiển thị lại danh sách 
+let editCheck = true; //biến để edit hàng này thì không được edit hàng khác
 function editProducts(index) {
-    let newValue = prompt("Mời bạn nhập tên sản phẩm mới ", productsList[index]);
-    let newAmount = prompt ("Mời bạn nhập số lượng ")
-    let newImages = prompt ("Nhập link ảnh")
-    amount[index] = newAmount;
-    productsList[index] = newValue;
-    images[index] = newImages;
-    showAllProducts();
+    // let newValue = prompt("Mời bạn nhập tên sản phẩm mới ", productsList[index]);
+    // let newAmount = prompt ("Mời bạn nhập số lượng ")
+    // let newImages = prompt ("Nhập link ảnh")
+    // amount[index] = newAmount;
+    // productsList[index] = newValue;
+    // images[index] = newImages;
+    // showAllProducts();
+    let check = document.getElementsByClassName('nameProducts')[index].innerHTML;
+    let check_1 = document.getElementsByClassName('amoutProducts')[index].innerHTML;
+    if (check == productsList[index] && check_1 == amount[index] && editCheck == true) {
+        document.getElementsByClassName('nameProducts')[index].innerHTML =  '<input type="text"  id="changeNameProducts" value="' + check + '">';
+        document.getElementsByClassName('amoutProducts')[index].innerHTML = '<input type="number"  id="changeAmoutProducts" value="' + check_1 + '">';
+        editCheck = false;
+    }
+    if (check != productsList[index] && check_1 != amount[index] && editCheck == false) {
+        productsList[index] = document.getElementById("changeNameProducts").value;
+        document.getElementsByClassName('nameProducts')[index].innerHTML = productsList[index];
+        amount[index] = document.getElementById("changeAmoutProducts").value;
+        document.getElementsByClassName('amoutProducts')[index].innerHTML = amount[index];
+        editCheck = true;
+        console.log(editCheck);
+    }
+    
 }
 
 // Hàm để tìm kiếm
